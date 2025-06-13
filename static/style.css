@@ -238,3 +238,97 @@ footer {
         height: 45vw;
     }
 }
+/* Messages Section */
+.messages-section {
+    background: #fff0f6;
+    border-radius: 20px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 6px 15px rgba(215, 127, 181, 0.2);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    color: #a64d79;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.messages-section h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: #d77fb5;
+}
+
+.message {
+    background: #f7d7f0;
+    border-radius: 15px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 10px rgba(215, 127, 181, 0.3);
+    transition: transform 0.3s ease;
+    cursor: default;
+}
+
+.message:hover {
+    transform: scale(1.03);
+}
+
+/* Pop-up messages */
+#popup-container {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.popup-message {
+    background: #f7d7f0;
+    color: #a64d79;
+    border-radius: 15px;
+    padding: 0.8rem 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(215, 127, 181, 0.5);
+    opacity: 0;
+    transform: translateX(100%);
+    animation: slideInOut 5s forwards;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* Slide in and fade out animation */
+@keyframes slideInOut {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    10% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    90% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+/* Floating kawaii icons */
+.floating-icon {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    opacity: 0.7;
+    animation: floatUpDown 6s ease-in-out infinite;
+    pointer-events: none;
+    user-select: none;
+    z-index: 500;
+}
+
+@keyframes floatUpDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}

@@ -21,6 +21,7 @@ body {
     color: var(--text-dark);
     line-height: 1.6;
     overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+    position: relative; /* For floating elements */
 }
 
 h1, h2, h3 {
@@ -41,6 +42,67 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+/* Floating Background Elements */
+.floating-elements-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicks to pass through */
+    z-index: 0; /* Behind other content */
+    overflow: hidden;
+}
+
+.floating-element {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+    border-radius: 50%; /* Make them circles/bubbles */
+    opacity: 0;
+    animation: float 10s infinite ease-in-out;
+    filter: blur(2px); /* Soften them */
+}
+
+.floating-element:nth-child(1) { width: 40px; height: 40px; left: 10%; animation-duration: 12s; animation-delay: 0s; background: rgba(var(--primary-pink), 0.5); }
+.floating-element:nth-child(2) { width: 60px; height: 60px; left: 20%; animation-duration: 15s; animation-delay: 2s; background: rgba(var(--secondary-mint), 0.5); }
+.floating-element:nth-child(3) { width: 30px; height: 30px; left: 30%; animation-duration: 10s; animation-delay: 4s; background: rgba(var(--tertiary-lavender), 0.5); }
+.floating-element:nth-child(4) { width: 50px; height: 50px; left: 40%; animation-duration: 13s; animation-delay: 6s; background: rgba(var(--quaternary-cream), 0.5); }
+.floating-element:nth-child(5) { width: 70px; height: 70px; left: 50%; animation-duration: 16s; animation-delay: 8s; background: rgba(var(--quinary-blue), 0.5); }
+.floating-element:nth-child(6) { width: 45px; height: 45px; left: 60%; animation-duration: 11s; animation-delay: 1s; background: rgba(var(--primary-pink), 0.5); }
+.floating-element:nth-child(7) { width: 55px; height: 55px; left: 70%; animation-duration: 14s; animation-delay: 3s; background: rgba(var(--secondary-mint), 0.5); }
+.floating-element:nth-child(8) { width: 25px; height: 25px; left: 80%; animation-duration: 9s; animation-delay: 5s; background: rgba(var(--tertiary-lavender), 0.5); }
+.floating-element:nth-child(9) { width: 65px; height: 65px; left: 90%; animation-duration: 17s; animation-delay: 7s; background: rgba(var(--quaternary-cream), 0.5); }
+.floating-element:nth-child(10) { width: 35px; height: 35px; left: 5%; animation-duration: 10s; animation-delay: 9s; background: rgba(var(--quinary-blue), 0.5); }
+
+/* You can also make some into hearts! */
+.floating-element.heart {
+    background: none;
+    font-size: 2em; /* Adjust size based on design */
+    width: auto;
+    height: auto;
+    animation: float-heart 10s infinite ease-in-out;
+}
+/* Ensure the .heart class specifically doesn't have background and has text */
+.floating-element.heart:before {
+    content: '💖';
+    display: block;
+    transform: rotate(random(-20deg, 20deg)); /* Can't do this with pure CSS, JS will handle */
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh) translateX(0) scale(0.5); opacity: 0; }
+    50% { transform: translateY(50vh) translateX(5vw) scale(1); opacity: 1; }
+    100% { transform: translateY(-10vh) translateX(-5vw) scale(0.8); opacity: 0; }
+}
+
+/* Specific animation for hearts to ensure they appear/disappear properly */
+@keyframes float-heart {
+    0% { transform: translateY(100vh) translateX(0) scale(0.5) rotate(0deg); opacity: 0; }
+    50% { transform: translateY(50vh) translateX(5vw) scale(1.2) rotate(30deg); opacity: 1; }
+    100% { transform: translateY(-10vh) translateX(-5vw) scale(0.8) rotate(60deg); opacity: 0; }
+}
+
 
 /* Loading Overlay */
 #loading-overlay {
@@ -142,6 +204,10 @@ nav ul li {
     box-shadow: 0 4px 8px var(--shadow-light);
     position: relative;
     overflow: hidden;
+    /* For button text pop/swell */
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-button:hover {
@@ -149,6 +215,16 @@ nav ul li {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
+
+.nav-button span { /* For text inside button */
+    display: inline-block;
+    transition: transform var(--transition-speed);
+}
+
+.nav-button:hover span {
+    transform: scale(1.1); /* Pop effect */
+}
+
 
 /* Section Styling */
 section {
@@ -181,6 +257,8 @@ section {
     text-align: left;
     min-height: 70vh;
     padding-top: 100px; /* Adjust for fixed header */
+    /* Path adjusted for 'Images/' directory */
+    background: url('../Images/hero_background_pattern.png') repeat; /* Optional subtle pattern */
     background-size: 100px;
     border-radius: var(--border-radius-soft);
 }
@@ -316,7 +394,7 @@ section {
     overflow: hidden;
     box-shadow: 0 4px 10px var(--shadow-light);
     cursor: pointer;
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, rotate 0.3s ease-out; /* Added rotate for tilt */
     position: relative;
     display: flex;
     flex-direction: column;
@@ -331,7 +409,7 @@ section {
 }
 
 .gallery-item:hover {
-    transform: translateY(-8px) scale(1.02);
+    transform: translateY(-8px) scale(1.02) rotate(3deg); /* Tilt on hover */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     z-index: 10;
 }
@@ -494,7 +572,7 @@ section {
     max-width: 400px;
     flex: 1;
     min-width: 280px;
-    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out, background-color 0.4s ease-out;
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out, background-color 0.4s ease-out, rotate 0.4s ease-out; /* Added rotate */
     border: 2px dashed var(--text-light); /* Cutesy dashed border */
     position: relative;
     overflow: hidden;
@@ -508,7 +586,7 @@ section {
 }
 
 .message-card:hover {
-    transform: translateY(-10px) rotate(-2deg);
+    transform: translateY(-10px) rotate(-3deg); /* Tilt on hover */
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
     background-color: var(--primary-pink); /* Change color on hover */
 }
@@ -582,6 +660,9 @@ section {
     transition: all var(--transition-speed);
     font-size: 1.1em;
     font-weight: bold;
+    /* For button text pop/swell */
+    position: relative;
+    overflow: hidden;
 }
 
 .contact-button .icon {
@@ -598,6 +679,15 @@ section {
 
 .contact-button:hover .icon {
     transform: rotate(15deg) scale(1.2);
+}
+
+.contact-button span:not(.icon) { /* For text inside contact button */
+    display: inline-block;
+    transition: transform var(--transition-speed);
+}
+
+.contact-button:hover span:not(.icon) {
+    transform: scale(1.1); /* Pop effect */
 }
 
 /* Hover Grow Effect */
@@ -718,6 +808,10 @@ footer {
         text-align: center;
     }
 
+    .cta-button span { /* Pop effect removal for smaller screens */
+        transform: none !important;
+    }
+
     .gallery-grid {
         grid-template-columns: 1fr; /* Single column for small screens */
     }
@@ -749,6 +843,10 @@ footer {
 
     .lightbox-content img, .lightbox-content video {
         max-height: calc(90vh - 80px); /* Adjust for smaller controls */
+    }
+
+    .floating-element {
+        display: none; /* Hide floating elements on very small screens to avoid clutter */
     }
 }
 

@@ -1,1 +1,69 @@
+{% extends "base.html" %}
 
+{% block content %}
+<section class="gallery">
+    <h2>Photo & Video Gallery</h2>
+
+    <div class="videos">
+        {% for video in videos %}
+        <video controls preload="metadata" class="media-video" tabindex="0" aria-label="Friendship video">
+            <source src="{{ url_for('static', filename='videos/' + video) }}" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+        {% endfor %}
+    </div>
+
+    <div class="photos">
+        {% for image in images %}
+        <div class="photo-container" tabindex="0" aria-label="Friendship photo">
+            <img src="{{ url_for('static', filename='images/' + image) }}" alt="Friendship photo" />
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
+
+{% extends "base.html" %}
+
+{% block content %}
+<section class="messages-section">
+    <h2>💌 Special Messages for Amorè 💌</h2>
+    <div class="message">
+        <p>You're the first friend I ever had, and the longest friendship of my life — about 8 wonderful years! 🌸</p>
+    </div>
+    <div class="message">
+        <p>Remember when we walked 6 kms trying to find Texs? We never found it, but the adventure was EPIC! 🚶‍♀️👗</p>
+    </div>
+    <div class="message">
+        <p>We always call each other <strong>EPIC</strong> — because that's exactly what our friendship is! ✨</p>
+    </div>
+    <div class="message">
+        <p>Your name saved in my phone as <em>Amorè</em> — because you are truly my heart's friend. 💖</p>
+    </div>
+</section>
+
+<section class="gallery">
+    <h2>Photo & Video Gallery</h2>
+
+    <div class="videos">
+        {% for video in videos %}
+        <video controls preload="metadata" class="media-video" tabindex="0" aria-label="Friendship video">
+            <source src="{{ url_for('static', filename='videos/' + video) }}" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+        {% endfor %}
+    </div>
+
+    <div class="photos">
+        {% for image in images %}
+        <div class="photo-container" tabindex="0" aria-label="Friendship photo">
+            <img src="{{ url_for('static', filename='images/' + image) }}" alt="Friendship photo" />
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Pop-up container -->
+<div id="popup-container"></div>
+{% endblock %}

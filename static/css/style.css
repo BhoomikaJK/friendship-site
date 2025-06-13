@@ -12,14 +12,6 @@
     --transition-speed: 0.3s ease-in-out;
 }
 
-@font-face {
-    font-family: 'Cute Font'; /* Replace with your actual cute font */
-    src: url('../fonts/CuteFont.woff') format('woff'); /* Adjust path and format if needed */
-    /* Add other formats for wider browser support */
-    font-weight: normal;
-    font-style: normal;
-}
-
 
 body {
     font-family: 'Quicksand', 'Cute Font', sans-serif;

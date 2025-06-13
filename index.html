@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Friendship Celebration</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script defer src="js/scripts.js"></script>
+</head>
+<body>
+    <!-- Floating kawaii icons will be added dynamically -->
+    <header>
+        <h1>
+            <span class="kawaii-icon">🌸</span> Friendship Celebration <span class="kawaii-icon">🐰</span>
+        </h1>
+        <nav>
+            <a href="#gallery" class="btn interactive-btn">Gallery</a>
+            <a href="#messages" class="btn interactive-btn">Messages</a>
+            <a href="#surprise" class="btn interactive-btn">Surprise</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Surprise confetti trigger -->
+        <div id="surprise"></div>
+
+        <!-- Sweet messages section -->
+        <section id="messages" class="messages-section">
+            <h2>💌 Special Messages for Amorè 💌</h2>
+            <div class="message">
+                <p>You're the first friend I ever had, and the longest friendship of my life — about 8 wonderful years! 🌸</p>
+            </div>
+            <div class="message">
+                <p>Remember when we walked 6 kms trying to find Texs? We never found it, but the adventure was <span class="epic">EPIC</span>! 🚶‍♀️👗</p>
+            </div>
+            <div class="message">
+                <p>We always call each other <strong>EPIC</strong> — because that's exactly what our friendship is! ✨</p>
+            </div>
+            <div class="message">
+                <p>Your name is saved in my phone as <em>Amorè</em> — because you are truly my heart's friend. 💖</p>
+            </div>
+            <div class="message">
+                <p>Thank you for being my person, my laughter, and my adventure buddy. 🐰🌸</p>
+            </div>
+        </section>
+
+        <!-- Gallery section -->
+        <section id="gallery" class="gallery">
+            <h2>Photo & Video Gallery</h2>
+            <div class="videos">
+                <!-- Replace with your video filenames -->
+                <video controls preload="metadata" class="media-video" tabindex="0" aria-label="Friendship video">
+                    <source src="videos/video1.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <video controls preload="metadata" class="media-video" tabindex="0" aria-label="Friendship video">
+                    <source src="videos/video2.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="photos">
+                <!-- Replace with your image filenames -->
+                <div class="photo-container" tabindex="0" aria-label="Friendship photo">
+                    <img src="images/photo1.jpg" alt="Friendship photo" />
+                </div>
+                <div class="photo-container" tabindex="0" aria-label="Friendship photo">
+                    <img src="images/photo2.jpg" alt="Friendship photo" />
+                </div>
+                <!-- Add more as needed -->
+            </div>
+        </section>
+
+        <!-- Pop-up container for cute messages -->
+        <div id="popup-container"></div>
+
+        <!-- Modal for extra surprise -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>🎉 Surprise! 🎉</h2>
+                <p>Thank you for being the most <span class="epic">EPIC</span> friend ever!<br>
+                Here's to more adventures, laughter, and inside jokes!<br>
+                <span style="font-size:2rem;">🌸🐰💖</span></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Made with 💖 for a special friend</p>
+    </footer>
+</body>
+</html>

@@ -1,92 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Friendship Celebration</title>
-    <link rel="stylesheet" href="css/styles.css" />
-    <script defer src="js/scripts.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🌸 Amorè & Me 🌸</title>
+  <!-- Favicon: Use a bunny emoji as favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐰</text></svg>">
+  <link rel="stylesheet" href="css/styles.css" />
+  <script defer src="js/scripts.js"></script>
 </head>
 <body>
-    <!-- Floating kawaii icons will be added dynamically -->
-    <header>
-        <h1>
-            <span class="kawaii-icon">🌸</span> Friendship Celebration <span class="kawaii-icon">🐰</span>
-        </h1>
-        <nav>
-            <a href="#gallery" class="btn interactive-btn">Gallery</a>
-            <a href="#messages" class="btn interactive-btn">Messages</a>
-            <a href="#surprise" class="btn interactive-btn">Surprise</a>
-        </nav>
-    </header>
+  <!-- Animated background and bubbles -->
+  <div class="animated-bg"></div>
+  <div class="bubbles"></div>
 
-    <main>
-        <!-- Surprise confetti trigger -->
-        <div id="surprise"></div>
+  <!-- Animated stickers in corners -->
+  <img src="stickers/bunny.svg" class="sticker sticker-topleft" alt="Bunny sticker" />
+  <img src="stickers/blossom.svg" class="sticker sticker-topright" alt="Blossom sticker" />
+  <img src="stickers/heart.svg" class="sticker sticker-bottomleft" alt="Heart sticker" />
+  <img src="stickers/blossom.svg" class="sticker sticker-bottomright" alt="Blossom sticker" />
 
-        <!-- Sweet messages section -->
-        <section id="messages" class="messages-section">
-            <h2>💌 Special Messages for Amorè 💌</h2>
-            <div class="message">
-                <p>You're the first friend I ever had, and the longest friendship of my life — about 8 wonderful years! 🌸</p>
-            </div>
-            <div class="message">
-                <p>Remember when we walked 6 kms trying to find Texs? We never found it, but the adventure was <span class="epic">EPIC</span>! 🚶‍♀️👗</p>
-            </div>
-            <div class="message">
-                <p>We always call each other <strong>EPIC</strong> — because that's exactly what our friendship is! ✨</p>
-            </div>
-            <div class="message">
-                <p>Your name is saved in my phone as <em>Amorè</em> — because you are truly my heart's friend. 💖</p>
-            </div>
-            <div class="message">
-                <p>Thank you for being my person, my laughter, and my adventure buddy. 🐰🌸</p>
-            </div>
-        </section>
+  <header>
+    <h1 id="typewriter"></h1>
+    <nav>
+      <a href="#gallery" class="btn interactive-btn">Gallery</a>
+      <a href="#videos" class="btn interactive-btn">Videos</a>
+      <a href="#surprise" class="btn interactive-btn">Surprise</a>
+    </nav>
+  </header>
 
-        <!-- Gallery section -->
-        <section id="gallery" class="gallery">
-            <h2>Photo & Video Gallery</h2>
-            <div class="videos">
-                <!-- Replace with your video filenames -->
-                <video controls preload="metadata" class="media-video" tabindex="0" aria-label="Friendship video">
-                    <source src="videos/video1.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-                <video controls preload="metadata" class="media-video" tabindex="0" aria-label="Friendship video">
-                    <source src="videos/video2.mp4" type="video/mp4" />
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <div class="photos">
-                <!-- Replace with your image filenames -->
-                <div class="photo-container" tabindex="0" aria-label="Friendship photo">
-                    <img src="images/photo1.jpg" alt="Friendship photo" />
-                </div>
-                <div class="photo-container" tabindex="0" aria-label="Friendship photo">
-                    <img src="images/photo2.jpg" alt="Friendship photo" />
-                </div>
-                <!-- Add more as needed -->
-            </div>
-        </section>
-
-        <!-- Pop-up container for cute messages -->
-        <div id="popup-container"></div>
-
-        <!-- Modal for extra surprise -->
-        <div id="modal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-                <h2>🎉 Surprise! 🎉</h2>
-                <p>Thank you for being the most <span class="epic">EPIC</span> friend ever!<br>
-                Here's to more adventures, laughter, and inside jokes!<br>
-                <span style="font-size:2rem;">🌸🐰💖</span></p>
-            </div>
+  <main>
+    <!-- Photo Carousel -->
+    <section id="gallery" class="gallery-section">
+      <h2>Photo Carousel</h2>
+      <div class="carousel-container">
+        <button class="carousel-btn left">&lt;</button>
+        <div class="carousel">
+          <!-- Images will be injected by JS -->
         </div>
-    </main>
+        <button class="carousel-btn right">&gt;</button>
+      </div>
+      <div class="carousel-indicators"></div>
+    </section>
 
-    <footer>
-        <p>Made with 💖 for a special friend</p>
-    </footer>
+    <!-- Videos Section -->
+    <section id="videos" class="videos-section">
+      <h2>Our EPIC Videos</h2>
+      <div class="videos">
+        <video controls class="media-video">
+          <source src="videos/video1.mp4" type="video/mp4" />
+        </video>
+        <video controls class="media-video">
+          <source src="videos/video2.mp4" type="video/mp4" />
+        </video>
+        <video controls class="media-video">
+          <source src="videos/video3.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <!-- Pop-up container for random messages -->
+    <div id="popup-container"></div>
+
+    <!-- Modal for surprise -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>🎉 Surprise! 🎉</h2>
+        <p>
+          Thank you for being the most <span class="epic">EPIC</span> friend ever!<br>
+          Here's to more adventures, laughter, and inside jokes!<br>
+          <span style="font-size:2rem;">🌸🐰💖</span>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Made with 💖 for Amorè — my first, longest and friendship!</p>
+  </footer>
+  <!-- Sound effect -->
+  <audio id="chime-sound" src="sounds/chime.mp3" preload="auto"></audio>
 </body>
 </html>

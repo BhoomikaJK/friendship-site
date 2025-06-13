@@ -1,236 +1,102 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Loading Overlay
-    const loadingOverlay = document.getElementById('loading-overlay');
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            loadingOverlay.style.opacity = '0';
-            setTimeout(() => loadingOverlay.style.display = 'none', 1000); // Hide after transition
-        }, 1000); // Show loading for at least 1 second
-    });
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Friendship Journey 💖</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='0' y='90' font-size='90'%3E💖%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+</head>
+<body>
 
-    // 2. Smooth Scrolling for Navigation
-    document.querySelectorAll('nav a').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            scrollToSection(targetId);
-        });
-    });
+    <div id="loading-overlay">
+        <div class="loader"></div>
+        <p class="loading-message">Loading Happiness...</p>
+    </div>
 
-    window.scrollToSection = (id) => {
-        const targetElement = document.getElementById(id);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - (document.querySelector('header').offsetHeight - 20), // Adjust for fixed header
-                behavior: 'smooth'
-            });
-        }
-    };
+    <header class="fade-in">
+        <nav>
+            <div class="nav-brand">Our Special Bond ✨</div>
+            <ul>
+                <li><a href="#hero" class="nav-button">Home</a></li>
+                <li><a href="#gallery" class="nav-button">Memories</a></li>
+                <li><a href="#messages" class="nav-button">Messages</a></li>
+                <li><a href="#contact" class="nav-button">Connect</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    // 3. Dynamic Gallery Loading
-    const galleryGrid = document.querySelector('.gallery-grid');
-    const totalImages = 45;
-    const totalVideos = 3;
-    const landscapeImages = [1, 5, 10, 15, 20, 25, 30, 35, 40, 41, 42, 43, 44, 45]; // Example landscape indices
+    <main>
+        <section id="hero" class="hero-section section-bubble fade-in">
+            <div class="hero-content">
+                <h1>Hello, My Dearest Friend! 🥰</h1>
+                <p>Welcome to our little corner of the internet, a place filled with our most cherished moments and shared laughter. This website is a small token of my immense gratitude and love for you!</p>
+                <button class="cta-button ripple-effect" onclick="scrollToSection('gallery')">Explore Our Journey</button>
+            </div>
+            <div class="hero-image">
+                <img src="static/Images/hero_placeholder.png" alt="Cute illustration of two friends">
+            </div>
+        </section>
 
-    let galleryItems = [];
+        <section id="gallery" class="gallery-section section-bubble fade-in">
+            <h2>Our Precious Memories 📸🎥</h2>
+            <div class="gallery-grid">
+                </div>
+            <div id="lightbox" class="lightbox">
+                <span class="close-btn">&times;</span>
+                <div class="lightbox-content">
+                    </div>
+                <a class="prev-btn">&#10094;</a>
+                <a class="next-btn">&#10095;</a>
+            </div>
+        </section>
 
-    // Add images
-    for (let i = 1; i <= totalImages; i++) {
-        const isLandscape = landscapeImages.includes(i);
-        galleryItems.push({
-            type: 'image',
-            src: `static/images/Image${i}.jpeg`,
-            alt: `Our Memory ${i}`,
-            isLandscape: isLandscape
-        });
-    }
+        <section id="messages" class="messages-section section-bubble fade-in">
+            <h2>Words from the Heart 💌</h2>
+            <div class="message-container">
+                <div class="message-card scroll-reveal left">
+                    <h3>To My Amazing Friend,</h3>
+                    <p>Every day spent with you is a gift. Your kindness, humor, and unwavering support mean the world to me. Thank you for being you!</p>
+                    <p class="author">- Your forever friend</p>
+                </div>
+                <div class="message-card scroll-reveal right">
+                    <h3>Thinking of You!</h3>
+                    <p>Remember that time we...? So many wonderful memories we've created. Looking forward to many more adventures together!</p>
+                    <p class="author">- With all my love</p>
+                </div>
+                <div class="message-card scroll-reveal left">
+                    <h3>My Confidant, My Joy,</h3>
+                    <p>You light up my life in so many ways. I cherish our conversations, our silly moments, and the comfort of just being ourselves around each other.</p>
+                    <p class="author">- Always there for you</p>
+                </div>
+            </div>
+            <button class="cta-button bounce-effect" onclick="alert('Sending you a virtual hug! 🥰')">Send a Virtual Hug!</button>
+        </section>
 
-    // Add videos
-    for (let i = 1; i <= totalVideos; i++) {
-        galleryItems.push({
-            type: 'video',
-            src: `static/videos/video${i}.mp4`,
-            alt: `Our Video Memory ${i}`,
-            isLandscape: false // Assuming videos are vertical/screenshot size
-        });
-    }
+        <section id="contact" class="contact-section section-bubble fade-in">
+            <h2>Let's Make More Memories! 🌟</h2>
+            <p>I'm always here for you. Feel free to reach out anytime!</p>
+            <div class="contact-buttons">
+                <a href="#" class="contact-button hover-grow">
+                    <span class="icon">📞</span> Call Me
+                </a>
+                <a href="#" class="contact-button hover-grow">
+                    <span class="icon">💬</span> Message Me
+                </a>
+                <a href="#" class="contact-button hover-grow">
+                    <span class="icon">💌</span> Email Me
+                </a>
+            </div>
+        </section>
+    </main>
 
-    // Shuffle gallery items for a more dynamic look
-    galleryItems.sort(() => Math.random() - 0.5);
+    <footer>
+        <p>&copy; 2025 Our Friendship Journey. Handcrafted with love. ❤️</p>
+    </footer>
 
-    galleryItems.forEach((item, index) => {
-        const galleryItemDiv = document.createElement('div');
-        galleryItemDiv.classList.add('gallery-item');
-        if (item.isLandscape) {
-            galleryItemDiv.classList.add('landscape');
-        }
+    <div id="cute-popup-container"></div>
 
-        if (item.type === 'image') {
-            const img = document.createElement('img');
-            img.src = item.src;
-            img.alt = item.alt;
-            img.loading = 'lazy'; // Lazy load images
-            galleryItemDiv.appendChild(img);
-        } else if (item.type === 'video') {
-            const video = document.createElement('video');
-            video.src = item.src;
-            video.controls = false; // Controls only in lightbox
-            video.muted = true; // Mute by default
-            video.loop = true; // Loop in preview
-            video.preload = 'metadata'; // Load metadata only
-            video.setAttribute('playsinline', ''); // For iOS autoplay
-            galleryItemDiv.appendChild(video);
-
-            // Play video on hover for preview
-            galleryItemDiv.addEventListener('mouseenter', () => video.play());
-            galleryItemDiv.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
-        }
-
-        const overlay = document.createElement('div');
-        overlay.classList.add('overlay');
-        const icon = document.createElement('span');
-        icon.textContent = item.type === 'image' ? '📸' : '▶️';
-        overlay.appendChild(icon);
-        galleryItemDiv.appendChild(overlay);
-
-        galleryItemDiv.dataset.index = index; // Store original index for lightbox navigation
-        galleryGrid.appendChild(galleryItemDiv);
-    });
-
-    // 4. Lightbox Functionality
-    const lightbox = document.getElementById('lightbox');
-    const lightboxContent = document.querySelector('.lightbox-content');
-    const closeBtn = document.querySelector('.close-btn');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    let currentIndex = 0;
-
-    galleryGrid.addEventListener('click', (e) => {
-        let targetItem = e.target.closest('.gallery-item');
-        if (targetItem) {
-            currentIndex = parseInt(targetItem.dataset.index);
-            openLightbox(currentIndex);
-        }
-    });
-
-    closeBtn.addEventListener('click', closeLightbox);
-    prevBtn.addEventListener('click', () => navigateLightbox(-1));
-    nextBtn.addEventListener('click', () => navigateLightbox(1));
-
-    function openLightbox(index) {
-        currentIndex = index;
-        const item = galleryItems[currentIndex];
-        lightboxContent.innerHTML = ''; // Clear previous content
-
-        if (item.type === 'image') {
-            const img = document.createElement('img');
-            img.src = item.src;
-            img.alt = item.alt;
-            lightboxContent.appendChild(img);
-        } else if (item.type === 'video') {
-            const video = document.createElement('video');
-            video.src = item.src;
-            video.controls = true;
-            video.autoplay = true; // Autoplay in lightbox
-            video.loop = true;
-            video.muted = false; // Unmute in lightbox
-            video.setAttribute('playsinline', '');
-            lightboxContent.appendChild(video);
-        }
-
-        lightbox.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Prevent scrolling when lightbox is open
-    }
-
-    function closeLightbox() {
-        lightbox.style.display = 'none';
-        lightboxContent.innerHTML = ''; // Stop video playback by removing element
-        document.body.style.overflow = 'auto'; // Re-enable scrolling
-    }
-
-    function navigateLightbox(direction) {
-        let newIndex = currentIndex + direction;
-        if (newIndex < 0) {
-            newIndex = galleryItems.length - 1;
-        } else if (newIndex >= galleryItems.length) {
-            newIndex = 0;
-        }
-        openLightbox(newIndex);
-    }
-
-    // Close lightbox on escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightbox.style.display === 'flex') {
-            closeLightbox();
-        }
-    });
-
-    // 5. Scroll Reveal Animations
-    const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
-
-    const observerOptions = {
-        root: null, // relative to the viewport
-        rootMargin: '0px',
-        threshold: 0.1 // 10% of the element must be visible
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Stop observing once visible
-            }
-        });
-    }, observerOptions);
-
-    scrollRevealElements.forEach(el => observer.observe(el));
-
-
-    // 6. Fade-in for Header and Hero Section on load
-    const fadeInElements = document.querySelectorAll('.fade-in');
-    fadeInElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        setTimeout(() => {
-            el.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
-            el.style.opacity = '1';
-            el.style.transform = 'translateY(0)';
-        }, 100); // Small delay to ensure CSS transition applies
-    });
-
-    // 7. Random Cute Popups
-    const cuteMessages = [
-        "You're the best!",
-        "Thinking of you! 💖",
-        "Sending virtual hugs!",
-        "You make my heart happy! 😊",
-        "Just a reminder you're awesome!",
-        "Smile! It suits you! 😄",
-        "So glad you're my friend!",
-        "Have a sparkling day! ✨",
-        "You're sunshine incarnate! ☀️",
-        "Pure joy, that's what you are!"
-    ];
-
-    const popupContainer = document.getElementById('cute-popup-container');
-
-    function showRandomPopup() {
-        const randomIndex = Math.floor(Math.random() * cuteMessages.length);
-        const message = cuteMessages[randomIndex];
-
-        const popup = document.createElement('div');
-        popup.classList.add('cute-popup');
-        popup.textContent = message;
-        popupContainer.appendChild(popup);
-
-        // Remove popup after animation
-        setTimeout(() => {
-            popup.remove();
-        }, 5000); // Matches popup-fade-out animation duration + initial display time
-    }
-
-    // Show a random popup every 10-20 seconds
-    setInterval(showRandomPopup, Math.random() * (20000 - 10000) + 10000); // Random interval between 10 to 20 seconds
-    showRandomPopup(); // Show one immediately on load
-});
+    <script src="static/js/script.js"></script>
+</body>
+</html>
